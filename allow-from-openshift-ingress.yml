@@ -1,0 +1,20 @@
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-from-openshift-ingress
+  namespace: my-database-app
+  selfLink: >-
+    /apis/networking.k8s.io/v1/namespaces/my-database-app/networkpolicies/allow-from-openshift-ingress
+  uid: ecd87c8e-b71e-11ea-bdb7-0a64f989d73e
+  resourceVersion: '1959931'
+  generation: 1
+  creationTimestamp: '2020-06-25T20:03:23Z'
+spec:
+  podSelector: {}
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              network.openshift.io/policy-group: ingress
+  policyTypes:
+    - Ingress
